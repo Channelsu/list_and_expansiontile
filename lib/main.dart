@@ -30,32 +30,24 @@ class Section {
   List<String> widgetNames;
 
   Section({this.sectionName, this.widgetNames});
-
-  final List<Section> _sections = <Section>[
-    Section(
-      sectionName: '基本',
-      widgetNames: ['Scaffold', 'AppBar', 'Text'],
-    ),
-    Section(
-      sectionName: 'ボタン',
-      widgetNames: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
-    ),
-    Section(
-      sectionName: 'レイアウト',
-      widgetNames: ['Center', 'Column', 'Row'],
-    ),
-  ];
 }
 
+final List<Section> _sections = <Section>[
+  Section(
+    sectionName: '基本',
+    widgetNames: ['Scaffold', 'AppBar', 'Text'],
+  ),
+  Section(
+    sectionName: 'ボタン',
+    widgetNames: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
+  ),
+  Section(
+    sectionName: 'レイアウト',
+    widgetNames: ['Center', 'Column', 'Row'],
+  ),
+];
+
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +57,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Wrap(
         children: [
-
+          ListView.builder(
+            itemCount: _sections.length,
+            itemBuilder: ,
+          
+          )
         ],
       ),
     );
