@@ -58,9 +58,16 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Wrap(
         children: [
           ListView.builder(
+            shrinkWrap: true,
             itemCount: _sections.length,
-            itemBuilder: ,
-          
+            itemBuilder: (context, index) {
+              final section = _sections[index];
+              return ExpansionTile(
+                title: ListTile(
+                  title: Text(section.sectionName),
+                ),
+              );
+            },
           )
         ],
       ),
