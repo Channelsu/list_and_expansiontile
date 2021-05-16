@@ -24,6 +24,29 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+// 表示する項目の設計図作成
+class Section {
+  String sectionName;
+  List<String> widgetNames;
+
+  Section({this.sectionName, this.widgetNames});
+
+  final List<Section> _sections = <Section>[
+    Section(
+      sectionName: '基本',
+      widgetNames: ['Scaffold', 'AppBar', 'Text'],
+    ),
+    Section(
+      sectionName: 'ボタン',
+      widgetNames: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
+    ),
+    Section(
+      sectionName: 'レイアウト',
+      widgetNames: ['Center', 'Column', 'Row'],
+    ),
+  ];
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -42,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Wrap(
         children: [
-          
+
         ],
       ),
     );
