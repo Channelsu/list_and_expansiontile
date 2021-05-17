@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 elevation: 3,
                 child: ExpansionTile(
                   title: ListTile(
-                    title: Text(section.sectionName),
+                    title: Text(section.sectionName, style: TextStyle(fontWeight: FontWeight.bold),),
                   ),
                   children: section.widgetNames.map((wn) =>
                     ListTile(
