@@ -62,9 +62,23 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: _sections.length,
             itemBuilder: (context, index) {
               final section = _sections[index];
-              return ExpansionTile(
-                title: ListTile(
-                  title: Text(section.sectionName),
+              return Card(  // Cardウィジェットはなくても良い。CardウィジェットはTile毛と相性が良い。
+                elevation: 3,
+                child: ExpansionTile(
+                  title: ListTile(
+                    title: Text(section.sectionName),
+                  ),
+                  children: [
+                    ListTile(
+                      title: Text(section.widgetNames[0]),
+                    ),
+                    ListTile(
+                      title: Text(section.widgetNames[1]),
+                    ),
+                    ListTile(
+                      title: Text(section.widgetNames[2]),
+                    ),
+                  ],
                 ),
               );
             },
