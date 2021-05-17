@@ -48,6 +48,7 @@ final List<Section> _sections = <Section>[
 ];
 
 class _MyHomePageState extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,17 +69,19 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: ListTile(
                     title: Text(section.sectionName),
                   ),
-                  children: [
+                  children: section.widgetNames.map((wn) =>
                     ListTile(
-                      title: Text(section.widgetNames[0]),
-                    ),
-                    ListTile(
-                      title: Text(section.widgetNames[1]),
-                    ),
-                    ListTile(
-                      title: Text(section.widgetNames[2]),
-                    ),
-                  ],
+                      title: Text(wn),
+                      leading: IconButton(
+                        icon: Icon(Icons.star_outline,),
+                        splashRadius: 0.1,
+                        // color: Colors.yellow,
+                        onPressed: (){
+                          print('お気に入り');
+                        },
+                      ),
+                    )
+                  ).toList(),
                 ),
               );
             },
