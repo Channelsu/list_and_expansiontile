@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listandexpansiontile/next_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,7 +38,7 @@ final List<Section> _sections = <Section>[
   Section(
     sectionName: '基本',
     widgets: [
-      {'id': 1, 'widgetName': 'Scaffold', 'screen': null},
+      {'id': 1, 'widgetName': 'Scaffold', 'screen': NextPage(widgetNameTitle: 'Scaffold')},
       {'id': 2, 'widgetName': 'AppBar', 'screen': null},
       {'id': 3, 'widgetName': 'Text', 'screen': null},
     ],
@@ -58,14 +59,6 @@ final List<Section> _sections = <Section>[
       {'id': 9, 'widgetName': 'Row', 'screen': null},
     ],
   ),
-  // Section(
-  //   sectionName: 'ボタン',
-  //   widgets: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
-  // ),
-  // Section(
-  //   sectionName: 'レイアウト',
-  //   widgets: ['Center', 'Column', 'Row'],
-  // ),
 ];
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -92,7 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   children: section.widgets.map((widget) =>
                     ListTile(
-                      title: Text(widget['widgetName']),
                       leading: IconButton(
                         icon: Icon(Icons.star_outline,),
                         splashRadius: 0.1,
@@ -101,6 +93,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('お気に入り');
                         },
                       ),
+                      title: Text(widget['widgetName']),
+                      trailing: Icon(Icons.arrow_right),
+                      onTap: (){
+                        Navigator.push(
+                          context,
+                          // MaterialPageRoute(builder: (context) => NextPage(widgetNameTitle: widget['widgetName']),)
+                          MaterialPageRoute(builder: (context) => widget['screen'],)
+                        );
+                      },
                     )
                   ).toList(),
                 ),
