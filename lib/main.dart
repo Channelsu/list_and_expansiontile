@@ -27,24 +27,45 @@ class MyHomePage extends StatefulWidget {
 // 表示する項目の設計図作成
 class Section {
   String sectionName;
-  List<String> widgetNames;
+  // List<String> widgets;
+  List<Map<String, dynamic>> widgets;
 
-  Section({this.sectionName, this.widgetNames});
+  Section({this.sectionName, this.widgets});
 }
 
 final List<Section> _sections = <Section>[
   Section(
     sectionName: '基本',
-    widgetNames: ['Scaffold', 'AppBar', 'Text'],
+    widgets: [
+      {'id': 1, 'widgetName': 'Scaffold', 'screen': null},
+      {'id': 2, 'widgetName': 'AppBar', 'screen': null},
+      {'id': 3, 'widgetName': 'Text', 'screen': null},
+    ],
   ),
   Section(
     sectionName: 'ボタン',
-    widgetNames: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
+    widgets: [
+      {'id': 4, 'widgetName': 'ElevatedButton', 'screen': null},
+      {'id': 5, 'widgetName': 'TextButton', 'screen': null},
+      {'id': 6, 'widgetName': 'OutlinedButton', 'screen': null},
+    ],
   ),
   Section(
     sectionName: 'レイアウト',
-    widgetNames: ['Center', 'Column', 'Row'],
+    widgets: [
+      {'id': 7, 'widgetName': 'Center', 'screen': null},
+      {'id': 8, 'widgetName': 'Column', 'screen': null},
+      {'id': 9, 'widgetName': 'Row', 'screen': null},
+    ],
   ),
+  // Section(
+  //   sectionName: 'ボタン',
+  //   widgets: ['ElevatedButton', 'TextButton', 'OutlinedButton'],
+  // ),
+  // Section(
+  //   sectionName: 'レイアウト',
+  //   widgets: ['Center', 'Column', 'Row'],
+  // ),
 ];
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -69,9 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: ListTile(
                     title: Text(section.sectionName, style: TextStyle(fontWeight: FontWeight.bold),),
                   ),
-                  children: section.widgetNames.map((wn) =>
+                  children: section.widgets.map((widget) =>
                     ListTile(
-                      title: Text(wn),
+                      title: Text(widget['widgetName']),
                       leading: IconButton(
                         icon: Icon(Icons.star_outline,),
                         splashRadius: 0.1,
