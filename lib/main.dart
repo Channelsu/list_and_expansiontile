@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:listandexpansiontile/model/section.dart';
+import 'package:listandexpansiontile/model/widget_panel.dart';
 import 'package:listandexpansiontile/next_page.dart';
 
 void main() {
@@ -29,26 +30,26 @@ class MyHomePage extends StatefulWidget {
 final List<Section> _sections = <Section>[
   Section(
     sectionName: '基本',
-    widgets: [
-      {'id': 1, 'widgetName': 'Scaffold', 'screen': NextPage(widgetNameTitle: 'Scaffold')},
-      {'id': 2, 'widgetName': 'AppBar', 'screen': null},
-      {'id': 3, 'widgetName': 'Text', 'screen': null},
+    widgetPanels: <WidgetPanel>[
+      WidgetPanel(id: 1, widgetName: 'Scaffold', detailPage: NextPage(widgetNameTitle: 'Scaffold')),
+      WidgetPanel(id: 1, widgetName: 'AppBar', detailPage: NextPage(widgetNameTitle: 'AppBar')),
+      WidgetPanel(id: 1, widgetName: 'Text', detailPage: NextPage(widgetNameTitle: 'Text')),
     ],
   ),
   Section(
     sectionName: 'ボタン',
-    widgets: [
-      {'id': 4, 'widgetName': 'ElevatedButton', 'screen': null},
-      {'id': 5, 'widgetName': 'TextButton', 'screen': null},
-      {'id': 6, 'widgetName': 'OutlinedButton', 'screen': null},
+    widgetPanels: <WidgetPanel>[
+      WidgetPanel(id: 1, widgetName: 'ElevatedButton', detailPage: NextPage(widgetNameTitle: 'ElevatedButton')),
+      WidgetPanel(id: 1, widgetName: 'TextButton', detailPage: NextPage(widgetNameTitle: 'TextButton')),
+      WidgetPanel(id: 1, widgetName: 'OutlinedButton', detailPage: NextPage(widgetNameTitle: 'OutlinedButton')),
     ],
   ),
   Section(
     sectionName: 'レイアウト',
-    widgets: [
-      {'id': 7, 'widgetName': 'Center', 'screen': null},
-      {'id': 8, 'widgetName': 'Column', 'screen': null},
-      {'id': 9, 'widgetName': 'Row', 'screen': null},
+    widgetPanels: <WidgetPanel>[
+      WidgetPanel(id: 1, widgetName: 'Center', detailPage: NextPage(widgetNameTitle: 'Center')),
+      WidgetPanel(id: 1, widgetName: 'Column', detailPage: NextPage(widgetNameTitle: 'Column')),
+      WidgetPanel(id: 1, widgetName: 'Row', detailPage: NextPage(widgetNameTitle: 'Row')),
     ],
   ),
 ];
@@ -75,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: ListTile(
                     title: Text(section.sectionName, style: TextStyle(fontWeight: FontWeight.bold),),
                   ),
-                  children: section.widgets.map((widget) =>
+                  children: section.widgetPanels.map((widgetPanel) =>
                     ListTile(
                       leading: IconButton(
                         icon: Icon(Icons.star_outline,),
@@ -85,13 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           print('お気に入り');
                         },
                       ),
-                      title: Text(widget['widgetName']),
+                      title: Text(widgetPanel.widgetName),
                       trailing: Icon(Icons.arrow_right),
                       onTap: (){
                         Navigator.push(
                           context,
                           // MaterialPageRoute(builder: (context) => NextPage(widgetNameTitle: widget['widgetName']),)
-                          MaterialPageRoute(builder: (context) => widget['screen'],)
+                          MaterialPageRoute(builder: (context) => widgetPanel.detailPage,)
                         );
                       },
                     )
