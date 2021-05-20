@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listandexpansiontile/model/section.dart';
 import 'package:listandexpansiontile/next_page.dart';
 
 void main() {
@@ -23,15 +24,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
-}
-
-// 表示する項目の設計図作成
-class Section {
-  String sectionName;
-  // List<String> widgets;
-  List<Map<String, dynamic>> widgets;
-
-  Section({this.sectionName, this.widgets});
 }
 
 final List<Section> _sections = <Section>[
