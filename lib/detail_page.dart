@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class NextPage extends StatelessWidget {
+class DetailPage extends StatelessWidget {
   String widgetNameTitle;
 
-  NextPage({this.widgetNameTitle});
+  DetailPage({this.widgetNameTitle});
 
   @override
   Widget build(BuildContext context) {
